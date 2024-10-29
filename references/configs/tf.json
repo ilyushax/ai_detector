@@ -1,0 +1,21 @@
+{
+    "training_args": {
+        "output_dir": "../models/basev",
+        "eval_strategy": "steps",
+        "gradient_accumulation_steps": 256,
+        "gradient_checkpointing": true,
+        "gradient_checkpointing_kwargs": {"use_reentrant": false},
+        "learning_rate": 1e-5,
+        "per_device_train_batch_size": 16,
+        "per_device_eval_batch_size": 32,
+        "num_train_epochs": 2,
+        "weight_decay": 0.01,
+        "logging_steps": 2,
+        "overwrite_output_dir": true,
+        "save_strategy": "no",
+        "save_total_limit": null,
+        "seed": 42,
+        "fp16": true,
+        "eval_on_start": true
+    }
+}

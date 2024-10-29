@@ -1,0 +1,40 @@
+{
+    "quantization_config": {
+        "load_in_4bit": true,
+        "bnb_4bit_quant_type": "nf4",
+        "bnb_4bit_compute_dtype": "float16"
+    },
+    "device_map": {
+        "": "cuda"
+    },
+    "training_args": {
+        "fp16": true,
+        "do_eval": true,
+        "eval_strategy": "step",
+        "gradient_accumulation_steps": 128,
+        "gradient_checkpointing": true,
+        "gradient_checkpointing_kwargs": {"use_reentrant": false},
+        "learning_rate": 2.0e-05,
+        "log_level": "info",
+        "logging_steps": 5,
+        "logging_strategy": "steps",
+        "lr_scheduler_type": "cosine",
+        "max_steps": -1,
+        "num_train_epochs": 1,
+        "output_dir": "models/base",
+        "overwrite_output_dir": true,
+        "per_device_eval_batch_size": 16,
+        "per_device_train_batch_size": 32,
+        "save_strategy": "no",
+        "save_total_limit": null,
+        "seed": 42
+    },
+    "peft_config": {
+        "r": 16,
+        "lora_alpha": 32,
+        "lora_dropout": 0.2,
+        "bias": "none",
+        "task_type": "CLASSIFICATION",
+        "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj"]
+    }
+}
